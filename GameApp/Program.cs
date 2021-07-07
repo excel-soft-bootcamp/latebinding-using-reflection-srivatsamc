@@ -23,46 +23,97 @@ namespace GameApp
             string displayMessage = $"Enter Your Choice {(int)Options.BASIC}->Basic,{(int)Options.INTERMEDIATE}->Intermediate,{(int)Options.ADVANCED}->Advanced";
             Console.WriteLine(displayMessage);
             Options _choice =(Options)Int32.Parse( Console.ReadLine());
-            switch (_choice)
-            {
-                case Options.BASIC:
-                    Console.WriteLine("Basic Level");
+
+
+                switch (_choice)
+                {
+                    case Options.BASIC:
+                        Console.WriteLine("Basic Level");
                     //Use Reflection  
                     //Assembly Load
-                    System.Reflection.Assembly basicLevelLib = 
-      System.Reflection.Assembly.LoadFile(@"C:\Users\user\source\repos\excelsoft\Examples\GameApp\bin\Debug\LevelLibs\BasicLevelLib.dll");
-                    // Search For Class - BasicLevelType
-                   System.Type basicLevelTypeClassRef= basicLevelLib.GetType("BasicLevelLib.BasicLevelType");
-                    if (basicLevelTypeClassRef != null)
-                    {
-                        if (basicLevelTypeClassRef.IsClass)
+                    System.Reflection.Assembly basicLevelLib =
+      System.Reflection.Assembly.LoadFile(@"C:\Users\srivatsa.mc\Documents\GitHub\latebinding-using-reflection-srivatsamc\GameApp\bin\Debug\LevelLibs\BasicLevelLib.dll");
+                        // Search For Class - BasicLevelType
+                        System.Type basicLevelTypeClassRef = basicLevelLib.GetType("BasicLevelLib.BasicLevelType");
+                        if (basicLevelTypeClassRef != null)
                         {
-                            //Instantiate Type
-                            //BasicLevelLib.BasicLevelType objref=new BasicLevelLib.BasicLevelType() ; Early Binding
-                           Object objRef =System.Activator.CreateInstance(basicLevelTypeClassRef); //LateBinding Code
-                            //Discove Method
-                          System.Reflection.MethodInfo _methodRef=  basicLevelTypeClassRef.GetMethod("Play");
-                            if (!_methodRef.IsStatic)
+                            if (basicLevelTypeClassRef.IsClass)
                             {
-                                //Invoke NonStatic Method
-                                // string Play(string playerName, int earlierPoints){}
-                                //object result=  _methodRef.Invoke(objRef, new object[] {"Tom",20 });
-                                object result =  _methodRef.Invoke(objRef, new object[] {});
-                                Console.WriteLine(result.ToString());
+                                //Instantiate Type
+                                //BasicLevelLib.BasicLevelType objref=new BasicLevelLib.BasicLevelType() ; Early Binding
+                                Object objRef = System.Activator.CreateInstance(basicLevelTypeClassRef); //LateBinding Code
+                                                                                                         //Discove Method
+                                System.Reflection.MethodInfo _methodRef = basicLevelTypeClassRef.GetMethod("Play");
+                                if (!_methodRef.IsStatic)
+                                {
+                                    //Invoke NonStatic Method
+                                    // string Play(string playerName, int earlierPoints){}
+                                    //object result=  _methodRef.Invoke(objRef, new object[] {"Tom",20 });
+                                    object result = _methodRef.Invoke(objRef, new object[] { });
+                                    Console.WriteLine(result.ToString());
+                                }
+
                             }
 
                         }
+                        break;
+                    case Options.INTERMEDIATE:
+                        Console.WriteLine("Intermediate Level");
 
-                    }
-                     break;
-                case Options.INTERMEDIATE:
-                    Console.WriteLine("Intermediate Level");
-                     break;
-                case Options.ADVANCED:
-                    Console.WriteLine("Advanced Level");
-                    break;
-                
-            }
+                        System.Reflection.Assembly intermediateLevelLib =
+          System.Reflection.Assembly.LoadFile(@"C:\Users\srivatsa.mc\Documents\GitHub\latebinding-using-reflection-srivatsamc\GameApp\bin\Debug\LevelLibs\IntermediateLevelLib.dll");
+
+                        System.Type intermediateLevelTypeClassRef = intermediateLevelLib.GetType("IntermediateLevelLib.IntermediateLevelType");
+                        if (intermediateLevelTypeClassRef != null)
+                        {
+                            if (intermediateLevelTypeClassRef.IsClass)
+                            {
+
+                                Object objRef = System.Activator.CreateInstance(intermediateLevelTypeClassRef);
+
+                                System.Reflection.MethodInfo _methodRef = intermediateLevelTypeClassRef.GetMethod("Start");
+                                if (!_methodRef.IsStatic)
+                                {
+
+                                    object result = _methodRef.Invoke(objRef, new object[] { "Srivatsa" });
+                                    Console.WriteLine(result.ToString());
+                                }
+
+                            }
+
+                        }
+                        break;
+
+                    case Options.ADVANCED:
+                        Console.WriteLine("Advanced Level");
+
+                        System.Reflection.Assembly advancedLevelLib =
+          System.Reflection.Assembly.LoadFile(@"C:\Users\srivatsa.mc\Documents\GitHub\latebinding-using-reflection-srivatsamc\GameApp\bin\Debug\LevelLibs\AdvancedLevelLib.dll");
+
+                        System.Type advancedLevelTypeClassRef = advancedLevelLib.GetType("BasicLevelLib.BasicLevelType");
+                        if (advancedLevelTypeClassRef != null)
+                        {
+                            if (advancedLevelTypeClassRef.IsClass)
+                            {
+
+                                Object objRef = System.Activator.CreateInstance(advancedLevelTypeClassRef);
+
+                                System.Reflection.MethodInfo _methodRef = advancedLevelTypeClassRef.GetMethod("Begin");
+                                if (!_methodRef.IsStatic)
+                                {
+
+                                    object result = _methodRef.Invoke(objRef, new object[] { "Srivatsa", 150 });
+                                    Console.WriteLine(result.ToString());
+                                }
+
+                            }
+
+                        }
+                        break;
+
+
+                }
+
 
         }
     }
