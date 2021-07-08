@@ -1,7 +1,0 @@
-c:\users\srivatsa.mc\source\repos\GameApplication\GameApplication\bin\Debug\GameApplication.exe.config
-c:\users\srivatsa.mc\source\repos\GameApplication\GameApplication\bin\Debug\GameApplication.exe
-c:\users\srivatsa.mc\source\repos\GameApplication\GameApplication\bin\Debug\GameApplication.pdb
-c:\users\srivatsa.mc\source\repos\GameApplication\GameApplication\obj\Debug\GameApplication.csproj.CoreCompileInputs.cache
-c:\users\srivatsa.mc\source\repos\GameApplication\GameApplication\obj\Debug\GameApplication.exe
-c:\users\srivatsa.mc\source\repos\GameApplication\GameApplication\obj\Debug\GameApplication.pdb
-c:\users\srivatsa.mc\source\repos\GameApplication\GameApplication\obj\Debug\GameApplication.csprojResolveAssemblyReference.cache
