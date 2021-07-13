@@ -35,7 +35,7 @@ namespace GameApp
                                 System.Reflection.Assembly.LoadFile(@"C:\Users\srivatsa.mc\Documents\GitHub\latebinding-using-reflection-srivatsamc\GameApp\bin\Debug\LevelLibs\BasicLevelLib.dll");
 
                                 System.Type basicLevelTypeClassRef = basicLevelLib.GetType("BasicLevelLib.BasicLevelType");
-                                CheckForNullIsClassIsStatic(basicLevelTypeClassRef, "Play");
+                                CheckForNullIsClassIsStatic(basicLevelTypeClassRef, "Play", new object[] { });
 
                                 break;
 
@@ -46,7 +46,7 @@ namespace GameApp
                                 System.Reflection.Assembly.LoadFile(@"C:\Users\srivatsa.mc\Documents\GitHub\latebinding-using-reflection-srivatsamc\GameApp\bin\Debug\LevelLibs\IntermediateLevelLib.dll");
 
                                 System.Type intermediateLevelTypeClassRef = intermediateLevelLib.GetType("IntermediateLevelLib.IntermediateLevelType");
-                                CheckForNullIsClassIsStatic(intermediateLevelTypeClassRef,"Start");
+                                CheckForNullIsClassIsStatic(intermediateLevelTypeClassRef,"Start", new object[] { "Srivatsa" });
 
                                 break;
 
@@ -57,7 +57,7 @@ namespace GameApp
                                 System.Reflection.Assembly.LoadFile(@"C:\Users\srivatsa.mc\Documents\GitHub\latebinding-using-reflection-srivatsamc\GameApp\bin\Debug\LevelLibs\AdvancedLevelLib.dll");
 
                                 System.Type advancedLevelTypeClassRef = advancedLevelLib.GetType("AdvancedLevelLib.AdvancedLevelType");
-                                CheckForNullIsClassIsStatic(advancedLevelTypeClassRef, "Begin");
+                                CheckForNullIsClassIsStatic(advancedLevelTypeClassRef, "Begin", new object[] { "Srivatsa", 100 }); 
                                 break;
                         }
                     }
@@ -74,7 +74,7 @@ namespace GameApp
 
                
         }
-        public static void CheckForNullIsClassIsStatic(System.Type levelClassRef, string methodName)
+        public static void CheckForNullIsClassIsStatic(System.Type levelClassRef, string methodName,object[] argument)
         {
             if (levelClassRef != null)
             {
@@ -87,17 +87,17 @@ namespace GameApp
                     {
                         if (methodName == "Play")
                         {
-                            object result = _methodRef.Invoke(objRef, new object[] { });
+                            object result = _methodRef.Invoke(objRef,argument);
                             Console.WriteLine(result.ToString());
                         }
                         else if (methodName == "Start")
                         {
-                            object result = _methodRef.Invoke(objRef, new object[] {"Srivatsa" });
+                            object result = _methodRef.Invoke(objRef,argument);
                             Console.WriteLine(result.ToString());
                         }
                         else if (methodName == "Begin")
                         {
-                            object result = _methodRef.Invoke(objRef, new object[] {"Srivatsa",100});
+                            object result = _methodRef.Invoke(objRef,argument);
                             Console.WriteLine(result.ToString());
                         }
                     }
