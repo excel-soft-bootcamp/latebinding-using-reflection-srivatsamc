@@ -50,5 +50,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CheckConditionLib\CheckConditionLib.csproj">
+      <Project>{6ef5498d-d597-4d02-b640-eb314728213f}</Project>
+      <Name>CheckConditionLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
