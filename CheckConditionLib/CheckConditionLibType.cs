@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CheckConditionLib
 {
-    public class CheckConditionLibType
+    public class CheckConditionType
     {
         public static void CheckForNullIsClassIsStatic(System.Type levelClassRef, string methodName, object[] argument)
         {
